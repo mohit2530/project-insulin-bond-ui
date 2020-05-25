@@ -1,10 +1,10 @@
 export const signInQuestion = (values, errors) => {
     return {
-        username: {
-            value: values.username,
-            key: 'username',
-            label: 'Username',
-            error: errors.username
+        email: {
+            value: values.email,
+            key: 'email',
+            label: 'Email',
+            error: errors.email
         },
         password: {
             value: values.password,
