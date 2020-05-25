@@ -3,3 +3,24 @@ input {
     border-bottom: none !important;
     outline: none !important;
 }
+
+.padding-margin-10 {
+    margin: 10px;
+    padding: 10px;
+}
+
+.fixed-size-30 {
+    min-height: 30rem;
+}
+
+.fixed-size-50 {
+    min-height: 50rem;
+}
+
+.center-align-btn {
+    text-align: center;
+}
+
+.btn-center {
+    display: inline-block;
+}

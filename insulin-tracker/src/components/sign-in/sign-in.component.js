@@ -19,13 +19,21 @@ const SignInComponent = (props) => {
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit}>
-                <h1>Sign In</h1>
-                <FormErrorSummary errors={errors}/>
-                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
-                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
-                <Button/>
-            </form>
+            <div className="container grey lighten-3 z-depth-4 fixed-size-30">
+                <div className="container">
+                    <form onSubmit={handleSubmit} className="padding-margin-10">
+                        <h2 className="center-align">Sign In</h2>
+                        <FormErrorSummary errors={errors}/>
+                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
+                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
+                        <div className="center-align-btn">
+                            <div className="btn-center">
+                                <Button name={'Log In'} />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 };
