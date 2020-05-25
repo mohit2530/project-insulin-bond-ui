@@ -12,13 +12,12 @@ import {getUsername} from "../sign-in/sign-in.reducer";
 const SignUpComponent = (props) => {
   const onSubmit = async () => {
     props.dispatch(SignUpAction(values));
-  };
-
-    const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signUpValidators, onSubmit);
-
-    const question = signUpQuestions(values, errors);
+    },
+    { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signUpValidators, onSubmit),
+    question = signUpQuestions(values, errors);
 
     return (
+      <div className="container">
         <form onSubmit={handleSubmit}>
             <h1>Sign Up</h1>
             <h1>{getUsername()}</h1>
@@ -31,6 +30,7 @@ const SignUpComponent = (props) => {
             <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.confirmPassword} />
             <Button name={'Sign Up'}/>
         </form>
+      </div>
     )
 };
 
