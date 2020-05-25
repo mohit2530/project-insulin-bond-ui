@@ -13,20 +13,20 @@ const SignInComponent = (props) => {
     SignInGuard(props);
     const onSubmit = () => {
         props.dispatch(SignInAction(values));
-    };
-
-    const { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signInValidate, onSubmit);
-
-    const question = signInQuestion(values, errors);
+        },
+        { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signInValidate, onSubmit),
+        question = signInQuestion(values, errors);
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Sign In</h1>
-            <FormErrorSummary errors={errors}/>
-            <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
-            <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
-            <Button/>
-        </form>
+        <div className="container">
+            <form onSubmit={handleSubmit}>
+                <h1>Sign In</h1>
+                <FormErrorSummary errors={errors}/>
+                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
+                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
+                <Button/>
+            </form>
+        </div>
     )
 };
 
