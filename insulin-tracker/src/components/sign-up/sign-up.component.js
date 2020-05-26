@@ -29,7 +29,7 @@ const SignUpComponent = (props) => {
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.confirmPassword} />
                 <div className="center-align">
-                  <div className="btn-center"> 
+                  <div className="btn-center">
                     <Button name={'Register'} />
                   </div>
                 </div>

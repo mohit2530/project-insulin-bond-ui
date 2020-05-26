@@ -11,12 +11,13 @@ export default function signUpValidators(value) {
     }
     if (Validators.required(value.email)) {
         errors.email = 'Email is Required';
-    }
-    if (Validators.required(value.username)) {
-        errors.username = 'Username is Required';
+    } else if (Validators.email(value.email)) {
+        errors.email = 'Invalid Email Address';
     }
     if (Validators.required(value.password)) {
         errors.password = 'Password is Required';
+    } else if (Validators.password(value.password)) {
+        errors.password = 'Password Must Have 8 Character long, One Number and One Symbol';
     }
     if (Validators.required(value.confirmPassword)) {
         errors.confirmPassword = 'Confirm Password is Required';

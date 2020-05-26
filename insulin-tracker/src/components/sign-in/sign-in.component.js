@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import useForm from "../../library/utils/useForm";
 import signInValidate from "./sign-in.validators";
 import {signInQuestion} from "./sign-in.questions";
@@ -6,7 +6,7 @@ import TextboxQuestion from "../../library/questions/textbox-question/textbox-qu
 import Button from "../../library/button/Button";
 import FormErrorSummary from "../../library/utils/form-error-summary/form-error-summary";
 import {connect} from "react-redux";
-import {SignInAction, SignInLoadedAction} from "./sign-in.actions";
+import {SignInAction} from "./sign-in.actions";
 import SignInGuard from "./sign-in.guard";
 
 const SignInComponent = (props) => {
@@ -24,7 +24,7 @@ const SignInComponent = (props) => {
                     <form onSubmit={handleSubmit} className="padding-margin-10">
                         <h2 className="center-align">Sign In</h2>
                         <FormErrorSummary errors={errors}/>
-                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
+                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.email}/>
                         <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
                         <div className="center-align-btn">
                             <div className="btn-center">
