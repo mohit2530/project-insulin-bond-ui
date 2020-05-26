@@ -21,3 +21,13 @@ export const addToObject = (obj, key, value) => {
     obj.map(newObj => add.push(recreateObject(newObj, key, value)));
     return add;
 };
+
+export const scrollToErrorSummary = () => {
+    const errors = document.getElementById('form-values-error');
+    if (errors) {
+        errors.focus();
+       return errors.scrollIntoView({behavior: "smooth", block: "center"})
+    }
+};
+
+

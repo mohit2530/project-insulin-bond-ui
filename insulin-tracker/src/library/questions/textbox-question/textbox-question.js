@@ -34,6 +34,7 @@ const TextboxQuestion = ({question, onChange, onBlur}) => {
                             value={questionValue()}
                             onChange={onChange}
                             onBlur={onBlur}
+                            id={question.key}
                             maxLength={!!question.max ? question.max : ''}
                             minLength={!!question.min ? question.min : ''}
                             placeholder={placeHolder()}
