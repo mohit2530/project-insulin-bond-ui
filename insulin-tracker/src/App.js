@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import NavBar from './components/layouts/navbar';
 import Dashboard from './components/dashboard/Dashboard';
