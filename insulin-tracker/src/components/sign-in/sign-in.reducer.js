@@ -1,13 +1,14 @@
 import {SignInModel} from "./sign-in.model";
 import * as actions from "./sign-in.actions"
 import axios from 'axios';
-import { createSelector } from 'reselect'
+import {createSelector} from 'reselect'
 import {LOG_OUT_NAVIGATION} from "../../navigation/navigation.action";
 
 
 const initialState = {
-  user: getUsername(),
-  signIn: SignInModel
+    user: getUsername(),
+    signIn: SignInModel,
+    signInFailed: false
 };
 
 function reducer(state = initialState, action) {
@@ -15,10 +16,13 @@ function reducer(state = initialState, action) {
         case actions.SIGN_IN_SUCCEED:
             localStorage.setItem('user', JSON.stringify(action.payload));
             axios.defaults.headers.common.Authorization = `Bearer ${action.payload.token}`;
-            return {...state, user: action.payload};
+            return {...state, user: action.payload, signInFailed: false};
 
         case actions.SIGN_IN:
             return {...state, signIn: action.payload};
+
+        case actions.SIGN_IN_FAILED:
+            return {...state, signInFailed: true};
 
         case LOG_OUT_NAVIGATION:
             return {...state, user: ''};
@@ -35,6 +39,11 @@ const getState = state => state.SignIn;
 export const getStateUsername = createSelector(
     [getState],
     state => !!state.user && state.user
+);
+
+export const isSignInFailed = createSelector(
+    [getState],
+    state => state.signInFailed
 );
 
 export function getUsername() {

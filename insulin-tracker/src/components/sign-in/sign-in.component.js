@@ -8,13 +8,15 @@ import FormErrorSummary from "../../library/utils/form-error-summary/form-error-
 import {connect} from "react-redux";
 import {SignInAction} from "./sign-in.actions";
 import SignInGuard from "./sign-in.guard";
+import {isSignInFailed} from "./sign-in.reducer";
+import ValidationMessage from "../../library/common/validation-message/validation-message";
 
 const SignInComponent = (props) => {
     SignInGuard(props);
     const onSubmit = () => {
-        props.dispatch(SignInAction(values));
+            props.dispatch(SignInAction(values));
         },
-        { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signInValidate, onSubmit),
+        {handleSubmit, handleChange, handleBlur, values, errors} = useForm(signInValidate, onSubmit),
         question = signInQuestion(values, errors);
 
     return (
@@ -28,9 +30,11 @@ const SignInComponent = (props) => {
                         <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
                         <div className="center-align-btn">
                             <div className="btn-center">
-                                <Button name={'Log In'} />
+                                <Button name={'Log In'}/>
                             </div>
                         </div>
+                        {props.signInFailed$ &&
+                        <ValidationMessage message={'Something went wrong, Please check your email or password'}/>}
                     </form>
                 </div>
             </div>
@@ -38,6 +42,8 @@ const SignInComponent = (props) => {
     )
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    signInFailed$: isSignInFailed(state)
+});
 
 export default connect(mapStateToProps)(SignInComponent);

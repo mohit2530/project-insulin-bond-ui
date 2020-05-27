@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {scrollToErrorSummary} from "./globalUse";
 
 const useForm = (validate, runOnSubmit, initialState) => {
     const [values, setValues] = useState(!!initialState ? initialState : {});
@@ -16,6 +17,8 @@ const useForm = (validate, runOnSubmit, initialState) => {
                 runOnSubmit();
                 setSubmitting(false);
             } else {
+                scrollToErrorSummary();
+                setTouched([...Object.keys(errors)]);
                 setSubmitting(false);
             }
         }
