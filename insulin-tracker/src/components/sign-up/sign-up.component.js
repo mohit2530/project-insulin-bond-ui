@@ -17,7 +17,7 @@ const SignUpComponent = (props) => {
 
     return (
       <div className="container">
-        <div className="container grey lighten-3 z-depth-4 fixed-size-50">
+        <div className="container grey lighten-5 z-depth-4 fixed-size-50">
           <div className="container">
             <form onSubmit={handleSubmit} className="padding-margin-10">
                 <h2 className="center-align"> Create an Account </h2>
@@ -29,7 +29,7 @@ const SignUpComponent = (props) => {
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.confirmPassword} />
                 <div className="center-align">
-                  <div className="btn-center"> 
+                  <div className="btn-center">
                     <Button name={'Register'} />
                   </div>
                 </div>
