@@ -5,9 +5,18 @@ input {
     padding-left: 0.5em !important;
 }
 
+.padding-margin-100 {
+    margin: 100px;
+    padding: 0px;
+}
+
 .padding-margin-10 {
-    margin: 10px;
-    padding: 10px;
+    margin-top : 60px;
+    padding: 0px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
 }
 
 .fixed-size-30 {
@@ -24,4 +33,21 @@ input {
 
 .btn-center {
     display: inline-block;
+}
+
+.centerize {
+    text-align: center;
+}
+
+.center-img-sm {
+    min-width: 220px;
+    min-height: 220px;
+    max-height: 260px;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-left: 80px;
+}
+
+.pointer{
+    cursor: pointer;
 }

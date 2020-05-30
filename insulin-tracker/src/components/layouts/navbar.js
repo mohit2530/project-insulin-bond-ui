@@ -12,7 +12,7 @@ const NavBar = (props) => {
     return (
         <nav className="nav-wrapper teal darken-3">
             <div className="container">
-                <Link to="/" className="brand-logo left">
+                <Link to="/" className="brand-logo">
                     Insulin Tracker
                 </Link>
                 {props.username$ ? <SignedInLinks/> : <SignedOutLinks/>}

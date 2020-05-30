@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link, NavLink} from 'react-router-dom';
 import {SignInNavigationAction, SignUpNavigationAction} from "../../navigation/navigation.action";
 import {connect} from "react-redux";
-import {path} from "../../navigation/path";
+
 
 const SignedOutLinks = (props) => {
     const navigateToSignIn = () => props.dispatch(SignInNavigationAction());

@@ -17,7 +17,7 @@ const SignUpComponent = (props) => {
 
     return (
       <div className="container">
-        <div className="container grey lighten-3 z-depth-4 fixed-size-50">
+        <div className="container grey lighten-5 z-depth-4 fixed-size-50">
           <div className="container">
             <form onSubmit={handleSubmit} className="padding-margin-10">
                 <h2 className="center-align"> Create an Account </h2>
