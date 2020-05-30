@@ -1,4 +1,4 @@
-import {Validators} from "./utils/Validator";
+import {Validators} from "../common/utils/Validator";
 
 export const userQuestions = (values, errors) => {
     return {

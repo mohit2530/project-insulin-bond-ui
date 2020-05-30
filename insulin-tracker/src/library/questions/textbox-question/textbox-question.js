@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './textbox-question.scss'
 import ValidationMessage from "../../common/validation-message/validation-message";
-import {phoneMask} from "../../utils/mask";
+import {phoneMask} from "../../common/utils/mask";
 
 const TextboxQuestion = ({question, onChange, onBlur}) => {
     const placeHolder = () => {

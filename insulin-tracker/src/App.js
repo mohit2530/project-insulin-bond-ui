@@ -2,12 +2,11 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import NavBar from './components/layouts/navbar';
 import Dashboard from './components/dashboard/Dashboard';
-import Log from './lib/log';
+import Log from './library/log';
 import SignIn from "./components/sign-in/sign-in.component";
 import SignUpComponent from "./components/sign-up/sign-up.component";
 import {ConnectedRouter} from 'connected-react-router'
 import {path} from "./navigation/path";
-
 
 const App = ({history}) => {
     Log.info("React Application Initialized", "Main Component");

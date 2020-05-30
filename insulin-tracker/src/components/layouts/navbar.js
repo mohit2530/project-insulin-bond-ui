@@ -1,5 +1,5 @@
 import React from 'react';
-import Log from '../../lib/log';
+import Log from '../../library/log';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './signedInLinks';
 import SignedOutLinks from './signOutLinks';

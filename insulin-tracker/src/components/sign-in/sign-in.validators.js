@@ -1,4 +1,4 @@
-import {Validators} from "../../library/utils/Validator";
+import {Validators} from "../../library/common/utils/Validator";
 
 export default function signInValidate(values) {
     let errors = {};

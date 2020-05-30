@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Log from '../../lib/log';
+import Log from '../../library/log';
 import DosageSummary from './DosageSummary';
 
 const DosageList = () => {

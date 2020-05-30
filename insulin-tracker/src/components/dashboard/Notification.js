@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Log from '../../lib/log';
+import Log from '../../library/log';
 
 
 export default class Notification extends Component {

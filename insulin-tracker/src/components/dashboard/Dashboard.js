@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Notification from './Notification'
 import DosageList from '../dosage/DosageList';
-import Log from '../../lib/log';
+import Log from '../../library/log';
 
 export class Dashboard extends Component {
     render() {
