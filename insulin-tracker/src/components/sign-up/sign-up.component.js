@@ -25,7 +25,6 @@ const SignUpComponent = (props) => {
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.firstName} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.lastName} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.email} />
-                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password} />
                 <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.confirmPassword} />
                 <div className="center-align">

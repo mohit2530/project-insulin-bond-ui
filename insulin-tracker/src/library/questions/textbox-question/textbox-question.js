@@ -16,6 +16,8 @@ const TextboxQuestion = ({question, onChange, onBlur}) => {
     const questionValue = () => {
         if (question.type === 'tel') {
             return question.value = phoneMask(question.value);
+        } else if (question.value && question.validator && question.validator === 'alphabet') { // only allow alphabet input
+            return question.value.replace(/[^A-Za-z-]/ig, '');
         } else {
             return question.value || '';
         }
@@ -32,6 +34,7 @@ const TextboxQuestion = ({question, onChange, onBlur}) => {
                             value={questionValue()}
                             onChange={onChange}
                             onBlur={onBlur}
+                            id={question.key}
                             maxLength={!!question.max ? question.max : ''}
                             minLength={!!question.min ? question.min : ''}
                             placeholder={placeHolder()}
@@ -48,7 +51,6 @@ const TextboxQuestion = ({question, onChange, onBlur}) => {
 
 TextboxQuestion.propTypes = {
     value: PropTypes.string || PropTypes.number,
-    // formError: PropTypes.func.isRequired,
 };
 
 TextboxQuestion.defaultProps = {

@@ -10,19 +10,22 @@ import {connect} from "react-redux";
 import {SignInAction} from "./sign-in.actions";
 import SignInGuard from "./sign-in.guard";
 import Logo from '../../library/common/images/wc.jpg';
+import {isSignInFailed} from "./sign-in.reducer";
+import ValidationMessage from "../../library/common/validation-message/validation-message";
 
 const SignInComponent = (props) => {
     SignInGuard(props);
     const onSubmit = () => {
-        props.dispatch(SignInAction(values));
+            props.dispatch(SignInAction(values));
         },
-        { handleSubmit, handleChange, handleBlur, values, errors } = useForm(signInValidate, onSubmit),
+        {handleSubmit, handleChange, handleBlur, values, errors} = useForm(signInValidate, onSubmit),
         question = signInQuestion(values, errors);
 
     const navigateToSignUp = () => props.dispatch(SignUpNavigationAction());
 
     return (
         <div className="container">
+
             <div className="container z-depth-4 fixed-size-30">
                 <div class="row padding-margin-100">
                     <div class="col s5">
@@ -54,12 +57,29 @@ const SignInComponent = (props) => {
                             </form>
                         </div>
                     </div>
+            <div className="container grey lighten-3 z-depth-4 fixed-size-30">
+                <div className="container">
+                    <form onSubmit={handleSubmit} className="padding-margin-10">
+                        <h2 className="center-align">Sign In</h2>
+                        <FormErrorSummary errors={errors}/>
+                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.email}/>
+                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
+                        <div className="center-align-btn">
+                            <div className="btn-center">
+                                <Button name={'Log In'}/>
+                            </div>
+                        </div>
+                        {props.signInFailed$ &&
+                        <ValidationMessage message={'Something went wrong, Please check your email or password'}/>}
+                    </form>
                 </div>
             </div>
         </div>
     )
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    signInFailed$: isSignInFailed(state)
+});
 
 export default connect(mapStateToProps)(SignInComponent);

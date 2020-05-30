@@ -1,16 +1,20 @@
 import axios from 'axios';
 import {from} from "rxjs";
-import {ajax} from "rxjs/ajax";
 
-const api = 'http://localhost:8099/project/ib';
+
+const apiClient = axios.create({
+    baseURL: 'http://localhost:8099/project/ib',
+    timeout: 10000,
+    withCredentials: false,
+});
 
 export class CustomerService {
     static signIn = (signInModel) =>
-        from(axios.post(`${api}/login`, signInModel));
+        from(apiClient.post('/login', signInModel));
 
     static signUp = (signUpModel) =>
-        from(axios.post(`${api}/register`, signUpModel));
+        from(apiClient.post(`/register`, signUpModel));
 
     static logout = () =>
-        from(axios.get(`${api}/logout`));
+        from(apiClient.get(`/logout`));
 }

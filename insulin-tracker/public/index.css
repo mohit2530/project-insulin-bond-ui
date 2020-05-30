@@ -2,6 +2,7 @@ input {
     margin: 0 !important;
     border-bottom: none !important;
     outline: none !important;
+    padding-left: 0.5em !important;
 }
 
 .padding-margin-100 {

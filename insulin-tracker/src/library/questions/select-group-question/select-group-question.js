@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ValidationMessage from "../../common/validation-message/validation-message";
 import './select-group-question.scss';
-import {addToObject} from "../../utils/patterns";
+import {addToObject} from "../../utils/globalUse";
 
 const SelectGroupQuestion = ({question, onChange, onBlur}) => {
     const INITIAL_STATE = addToObject(question.data, 'isChecked', false);

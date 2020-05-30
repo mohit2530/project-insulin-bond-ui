@@ -5,7 +5,7 @@ export const SIGN_UP = `${actionType} Sign Up`;
 export const SIGN_UP_SUCCEED = `${actionType} Sign Up Succeed`;
 export const SIGN_UP_FAILED = `${actionType} Sign Up Failed`;
 
-export const SignUpAction = (payload) => ({
+export const SignUpAction = (payload = SignUpModel) => ({
         type: SIGN_UP,
         payload
 });

@@ -3,20 +3,15 @@ export const signUpQuestions = (value, error) => ({
        key: 'firstName',
        value: value.firstName,
        label: 'First Name',
+       validator: 'alphabet',
        error: error.firstName
    },
     lastName: {
         key: 'lastName',
         value: value.lastName,
         label: 'Last Name',
+        validator: 'alphabet',
         error: error.lastName
-    },
-    username: {
-        key: 'username',
-        value: value.username,
-        label: 'Username',
-        error: error.username,
-        min: 3
     },
     email: {
         key: 'email',
