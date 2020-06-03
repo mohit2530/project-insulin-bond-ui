@@ -1,9 +1,9 @@
 import {combineEpics, ofType} from "redux-observable";
-import {LOG_OUT_NAVIGATION, SIGN_IN_NAVIGATION, SIGN_UP_NAVIGATION} from "./navigation.action";
+import {LOG_OUT_NAVIGATION, LogOutSucceedAction, SIGN_IN_NAVIGATION, SIGN_UP_NAVIGATION} from "./navigation.action";
 import {catchError, exhaustMap, map, mapTo, tap} from "rxjs/operators";
 import {path} from "./path";
 import {push} from 'connected-react-router'
-import {EMPTY, merge, of} from "rxjs";
+import {concat, EMPTY, merge, of} from "rxjs";
 import {CustomerService} from "../core/api/customer-service";
 
 export default function navigationEpics() {
@@ -23,7 +23,11 @@ export default function navigationEpics() {
         function logOutNavigation$(action$) {
             return action$.pipe(
                 ofType(LOG_OUT_NAVIGATION),
-                exhaustMap(() => logout()),
+                exhaustMap(() => concat(
+                    logout(),
+                    of(LogOutSucceedAction())
+                    )
+                ),
                 catchError((error, caught) => merge(
                     EMPTY,
                     caught

@@ -2,29 +2,30 @@ import {SignInModel} from "./sign-in.model";
 import * as actions from "./sign-in.actions"
 import axios from 'axios';
 import {createSelector} from 'reselect'
-import {LOG_OUT_NAVIGATION} from "../../navigation/navigation.action";
+import {LOG_OUT_SUCCEED} from "../../navigation/navigation.action";
 
 
 const initialState = {
-    user: getUsername(),
+    user: getUserToken(),
     signIn: SignInModel,
-    signInFailed: false
+    signInFailed: false,
+    loading: false
 };
 
 function reducer(state = initialState, action) {
     switch (action.type) {
         case actions.SIGN_IN_SUCCEED:
             localStorage.setItem('user', JSON.stringify(action.payload));
-            axios.defaults.headers.common.Authorization = `Bearer ${action.payload.token}`;
-            return {...state, user: action.payload, signInFailed: false};
+            axios.defaults.headers.Authorization = `Bearer ${action.payload.token}`;
+            return {...state, user: action.payload, signInFailed: false, loading: false};
 
         case actions.SIGN_IN:
-            return {...state, signIn: action.payload};
+            return {...state, signIn: action.payload, loading: true};
 
         case actions.SIGN_IN_FAILED:
             return {...state, signInFailed: true};
 
-        case LOG_OUT_NAVIGATION:
+        case LOG_OUT_SUCCEED:
             return {...state, user: ''};
 
         default:
@@ -46,7 +47,13 @@ export const isSignInFailed = createSelector(
     state => state.signInFailed
 );
 
-export function getUsername() {
-    const username = localStorage.getItem('user');
-    return !!username ? username.substr(1, username.length - 2) : '';
+export function getUserToken() {
+    const username = JSON.parse(localStorage.getItem('user'));
+    return !!username && username.jwt;
+}
+
+
+export function getUserContext() {
+    const username = JSON.parse(localStorage.getItem('user'));
+    return !!username && username.context;
 }

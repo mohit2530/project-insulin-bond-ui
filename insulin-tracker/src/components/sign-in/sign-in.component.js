@@ -5,7 +5,7 @@ import {signInQuestion} from "./sign-in.questions";
 import TextboxQuestion from "../../library/questions/textbox-question/textbox-question";
 import Button from "../../library/button/Button";
 import FormErrorSummary from "../../library/utils/form-error-summary/form-error-summary";
-import { SignUpNavigationAction} from "../../navigation/navigation.action";
+import {SignUpNavigationAction} from "../../navigation/navigation.action";
 import {connect} from "react-redux";
 import {SignInAction} from "./sign-in.actions";
 import SignInGuard from "./sign-in.guard";
@@ -27,23 +27,29 @@ const SignInComponent = (props) => {
         <div className="container">
 
             <div className="container z-depth-4 fixed-size-30">
-                <div class="row padding-margin-100">
-                    <div class="col s5">
-                            <img src={Logo} alt = "temp-website-logo" className="center-img-sm"/>
-                            <h6 className = "red-text text-darken-2 center-align margin-top-30"> Not accepting new clients at this moment. </h6>
+                <div className="row padding-margin-100">
+                    <div className="col s5">
+                        <img src={Logo} alt="temp-website-logo" className="center-img-sm"/>
+                        <h6 className="red-text text-darken-2 center-align margin-top-30"> Not accepting new clients at
+                            this moment. </h6>
                     </div>
-                    <div class="col s7">
+                    <div className="col s7">
                         <div className="container">
                             <form onSubmit={handleSubmit} className="padding-margin-10">
                                 <div className="center-align">
-                                    <span class="blue-text text-darken-2">Sign In </span>
+                                    <span className="blue-text text-darken-2">Sign In </span>
                                 </div>
                                 <FormErrorSummary errors={errors}/>
-                                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.username}/>
-                                <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
+                                <TextboxQuestion onChange={handleChange} onBlur={handleBlur}
+                                                 question={question.email}/>
+                                <TextboxQuestion onChange={handleChange} onBlur={handleBlur}
+                                                 question={question.password}/>
+                                {props.signInFailed$ &&
+                                <ValidationMessage
+                                    message={'Something went wrong, Please check your email or password'}/>}
                                 <div className="center-align-btn margin-top-30">
                                     <div className="btn-center">
-                                        <Button name={'Log In'} />
+                                        <Button name={'Log In'}/>
                                     </div>
                                 </div>
                                 <div className="center-align-btn margin-top-30">
@@ -57,21 +63,6 @@ const SignInComponent = (props) => {
                             </form>
                         </div>
                     </div>
-            <div className="container grey lighten-3 z-depth-4 fixed-size-30">
-                <div className="container">
-                    <form onSubmit={handleSubmit} className="padding-margin-10">
-                        <h2 className="center-align">Sign In</h2>
-                        <FormErrorSummary errors={errors}/>
-                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.email}/>
-                        <TextboxQuestion onChange={handleChange} onBlur={handleBlur} question={question.password}/>
-                        <div className="center-align-btn">
-                            <div className="btn-center">
-                                <Button name={'Log In'}/>
-                            </div>
-                        </div>
-                        {props.signInFailed$ &&
-                        <ValidationMessage message={'Something went wrong, Please check your email or password'}/>}
-                    </form>
                 </div>
             </div>
         </div>

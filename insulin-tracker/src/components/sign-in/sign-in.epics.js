@@ -24,7 +24,9 @@ export default function signInEpics() {
         function signInComplete$(action$) {
             return action$.pipe(
                 ofType(SIGN_IN_SUCCEED),
-                mapTo(push(path.signUp))
+                mapTo(push(path.signUp)),
+                map(() => of(window.location.assign(path.signUp))
+                )
             )
         }
     );

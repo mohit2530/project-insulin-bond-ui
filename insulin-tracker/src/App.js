@@ -7,6 +7,7 @@ import SignIn from "./components/sign-in/sign-in.component";
 import SignUpComponent from "./components/sign-up/sign-up.component";
 import {ConnectedRouter} from 'connected-react-router'
 import {path} from "./navigation/path";
+import {getUserToken} from "./components/sign-in/sign-in.reducer";
 
 
 const App = ({history}) => {
